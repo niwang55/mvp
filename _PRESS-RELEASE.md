@@ -32,7 +32,7 @@ Once the project moves into development, the press release can be used as a touc
   > Use this app and it automatically generates one for you!
 
 ## Quote from You ##
-  > ""
+  > "This is probably a good idea"
 
 ## How to Get Started ##
   > Just enter a name into the form on the site, and it'll do everything else for you.
