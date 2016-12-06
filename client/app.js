@@ -2,15 +2,21 @@ var app = angular.module('ngApp', []);
 
 app.controller('aliasController', function($scope, $http) {
 
+  $http({
+    method: 'GET',
+    url: '/names'
+  }).then(function(response) {
+    $scope.generatedNames = response.data;
+  });
+
   $scope.adjList = window.adjList;
   $scope.nounList = window.nounList;
-  $scope.generatedNames = [];
   $scope.currentName = '';
   $scope.clickedName = {};
+  $scope.newName = {};
 
   var picReqUrl = 'https://api.500px.com/v1/photos/search?rpp=100&consumer_key=zooQGE9KlZlXTRSK1aBnKm69BQx17OpGoREecjhO&term=landscape';
   var quoteReqUrl = 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous';
-  var newName = {};
 
   var existsInGenerated = function(name, arr) {
     for (var i = 0; i < arr.length; i++) {
@@ -22,7 +28,7 @@ app.controller('aliasController', function($scope, $http) {
     return false;
   };
 
-  $scope.generateAndDisplayName = function(name) {
+  $scope.generateAndAddName = function(name) {
     var capitalize = function(word) {
       return word.charAt(0).toUpperCase() + word.slice(1);
     };
@@ -31,17 +37,20 @@ app.controller('aliasController', function($scope, $http) {
     var lastNameIndex = Math.floor( Math.random() * $scope.nounList.length );
     var genName = capitalize($scope.adjList[firstNameIndex]) + ' ' + capitalize($scope.nounList[lastNameIndex]);
 
-    newName = {
+    $scope.newName = {
       originalName: name,
       generatedName: genName,
       imageUrl: '',
       albumTitle: ''
     };
 
-    if ( !existsInGenerated(name, $scope.generatedNames) ) {
-      $scope.currentName = newName.generatedName;
-      $scope.generatedNames.push(newName);
-    }
+    $http.post('/names', $scope.newName);
+    $http({
+      method: 'GET',
+      url: '/names'
+    }).then(function(response) {
+      $scope.generatedNames = response.data;
+    });
 
     $scope.nameOfUser = '';
   };

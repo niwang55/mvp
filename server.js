@@ -1,25 +1,39 @@
 var express = require('express');
 var path = require('path');
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 
 var app = express();
+app.use(bodyParser.urlencoded({'extended': 'true'}));
+app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+
 mongoose.connect('mongodb://localhost/mvp');
 
 var Name = mongoose.model('Name', {
   originalName: String,
-  generatedname: String,
+  generatedName: String,
   imageUrl: String,
   albumTitle: String
 });
 
 app.use(express.static(path.join(__dirname, 'client')));
 
-app.get('/api/test', function(req, res) {
-  Name.create({
-    originalName: 'test',
-    generatedname: 'test',
-    imageUrl: 'test',
-    albumTitle: 'test'
+app.get('/names', function(req, res) {
+  Name.find({}, function(err, names) {
+    if (err) { res.send(err); }
+    res.json(names);
+  });
+});
+
+app.post('/names', function(req, res) {
+  Name.findOne({originalName: req.body.originalName}, function(err, name) {
+    if (!name) {
+      Name.create({
+        originalName: req.body.originalName,
+        generatedName: req.body.generatedName
+      });
+    }
   });
 });
 
