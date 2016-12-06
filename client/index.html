@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app='ngApp'>
+<head>
+  <title>Alias</title>
+
+  <!-- Script Tags/Style Sheets -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
+  <script src="app.js"></script>
+  <script src="data.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Bungee|Open+Sans|Raleway" rel="stylesheet">
+
+</head>
+<body ng-controller='aliasController'>
+
+  <h1>Pseudonym</h1>
+
+  <div class='name-block'>
+    <div class='name-form'>
+      <form name='nameForm'>
+        <input type='text' name='test' placeholder='Your full name' ng-model='nameOfUser'/>
+        <input type='submit' value='Generate!' ng-click='generateAndDisplayName(nameOfUser)'/>
+      </form>
+    </div>
+
+    <div class='name-list'>
+      <table border='1'>
+        <th colspan='2'>Generated Names</th>
+        <tr>
+          <th>Original</th>
+          <th>Pseudonym</th>
+        </tr>
+        <tr ng-repeat='name in generatedNames' ng-click='generateAlbumCover() || generateAlbumTitle()'>
+          <td>{{name.originalName}}</td>
+          <td>{{name.generatedName}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class='album'>
+    <span ng-show='clickedName.albumTitle'>Album:</span>
+    <img class='album-cover' src={{clickedName.imageUrl}} />
+    <span class='band-name'>{{clickedName.generatedName}}</span>
+    <span class='album-title'>{{clickedName.albumTitle}}</span>
+  </div>
+
+  <p>Click on a name to generate a random album</p>
+
+</body>
+</html>

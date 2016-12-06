@@ -1,0 +1,53 @@
+body {
+  background-color: lightgrey;
+  font-family: 'Open Sans';
+  font-size: 26px;
+  background-image: url('https://images.freecreatives.com/wp-content/uploads/2016/02/25-Subtle-Textures-Pack-Download.jpg');
+  background-size: cover;
+}
+
+table {
+  background-color: white;
+  min-width: 300px;
+}
+
+p {
+  font-size: 16px;
+}
+
+.name-block {
+  display: inline-block;
+}
+
+.album {
+  position: fixed;
+  top: 30px;
+  right: 700px;
+  display: inline-block;
+}
+
+.album-cover {
+  width: 200px;
+  position: absolute;
+}
+
+.album-title {
+  font-family: Raleway;
+  font-size: 16px;
+  left: 10px;
+  margin: 150px 0 15px;
+  position: absolute;
+  width: 175px;
+  color: white;
+  background-color: rgba(50, 50, 50, 0.75);
+}
+
+.band-name {
+  position: absolute;
+  width: 175px;
+  left: 15px;
+  font-size: 20px;
+  font-family: Bungee;
+  color: #eff2f7;
+  text-shadow: 2px 2px grey;
+}

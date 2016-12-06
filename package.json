@@ -1,0 +1,28 @@
+{
+  "name": "hrsf50-mvp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongoose": "^4.7.1",
+    "path": "^0.12.7",
+    "require": "^2.4.20"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niwang55/hrsf50-mvp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niwang55/hrsf50-mvp/issues"
+  },
+  "homepage": "https://github.com/niwang55/hrsf50-mvp#readme"
+}
