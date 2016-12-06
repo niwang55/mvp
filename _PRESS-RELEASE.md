@@ -1,4 +1,4 @@
-# RapAlias #
+# ArtistAlias #
 
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -16,11 +16,11 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
  
-## Rap Name Generator ##
+## Artist Name Generator ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
 
 ## Heading ##
-  > For any who needs an alias so their friends don't find out how bad they are at rapping, or who just wants a cool name.
+  > For any who needs an alias so their friends don't find out how bad they are at singing/rapping, or who just wants a cool name.
 
 ## Summary ##
   > Enter a name, get a name out. Each name is unique to the name that is first entered.
