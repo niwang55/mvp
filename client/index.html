@@ -30,7 +30,7 @@
           <th>Original</th>
           <th>Pseudonym</th>
         </tr>
-        <tr ng-repeat='name in generatedNames' ng-click='generateAlbumCover() || generateAlbumTitle()'>
+        <tr ng-repeat='name in generatedNames' ng-click='generateAlbum()'>
           <td>{{name.originalName}}</td>
           <td>{{name.generatedName}}</td>
         </tr>
@@ -38,11 +38,12 @@
     </div>
   </div>
 
+
   <div class='album'>
-    <span ng-show='clickedName.albumTitle'>Album:</span>
-    <img class='album-cover' src={{clickedName.imageUrl}} />
-    <span class='band-name'>{{clickedName.generatedName}}</span>
-    <span class='album-title'>{{clickedName.albumTitle}}</span>
+    <span ng-show='currentName.albumTitle'>Album:</span>
+    <img class='album-cover' src={{currentName.imageUrl}} />
+    <span class='band-name'>{{currentName.generatedName}}</span>
+    <span class='album-title'>{{currentName.albumTitle}}</span>
   </div>
 
   <p>Click on a name to generate a random album</p>

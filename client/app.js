@@ -55,45 +55,57 @@ app.controller('aliasController', function($scope, $http) {
     $scope.nameOfUser = '';
   };
 
-  $scope.generateAlbumCover = function() {
+  $scope.generateAlbum = function() {
     $scope.clickedName = $scope.generatedNames[this.$index];
+    $scope.currentName = {};
+    var nameOfClicked = $scope.clickedName.originalName;
 
-    $http.get(picReqUrl).then(function(response) {
-      var randomIndex = Math.floor(Math.random() * response.data.photos.length);
-      var fetchedUrl = response.data.photos[randomIndex].image_url;
+    // API call to 500px to get random image
+    $http.get(picReqUrl).then(function(urlResponse) {
+      var randomIndex = Math.floor(Math.random() * urlResponse.data.photos.length);
+      var fetchedUrl = urlResponse.data.photos[randomIndex].image_url;
 
-      var resObj = {
-        name: $scope.clickedName.originalName,
-        url: fetchedUrl
-      };
+      // API call to andrux to get random quote
+      $http({
+        method: 'POST', 
+        url: quoteReqUrl,
+        headers: {
+          'X-Mashape-Key': 'SC9tol3zkAmshUQqfW5b2DTQGLnXp1b1GZljsntMj0SOdJ2rCC'
+        }
+      }).then(function(quoteResponse) {
+        var fetchedQuote = quoteResponse.data.quote;
+        var quoteArr = fetchedQuote.split(' ');
+        var finishedQuote = quoteArr.splice(quoteArr.length - 4).join(' ');
+        finishedQuote = finishedQuote.substring(0, finishedQuote.length - 1);
 
-      $http.post('/albumpic', resObj);
+        var resObj = {
+          name: $scope.clickedName.originalName,
+          url: fetchedUrl,
+          quote: finishedQuote
+        };
+
+        $http.post('/album', resObj);
+
+        $http({
+          method: 'GET',
+          url: '/names'
+        }).then(function(response) {
+          var namesArray = response.data;
+          namesArray.forEach(function(element) {
+            if (element.originalName === nameOfClicked) {
+              $scope.currentName = element;
+            }
+          });
+        });
+
+      }, function(err) {
+        throw err;
+      });
+
+    }, function(error) {
+      throw err;
     });
 
   };
 
-  $scope.generateAlbumTitle = function() {
-    $http({
-      method: 'POST',
-      url: quoteReqUrl,
-      headers: {
-        'X-Mashape-Key': 'SC9tol3zkAmshUQqfW5b2DTQGLnXp1b1GZljsntMj0SOdJ2rCC'
-      }
-    }).then(function(response) {
-      var fetchedQuote = response.data.quote;
-      var quoteArr = fetchedQuote.split(' ');
-      var finishedQuote = quoteArr.splice(quoteArr.length - 4).join(' ');
-      finishedQuote = finishedQuote.substring(0, finishedQuote.length - 1);
-
-      var resObj = {
-        name: $scope.clickedName.originalName,
-        quote: finishedQuote
-      };
-      $http.post('/albumtitle', resObj);
-
-      // if ($scope.clickedName.albumTitle === '') {
-      //   $scope.clickedName.albumTitle = finishedQuote;
-      // }
-    });
-  };
 });
