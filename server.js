@@ -37,6 +37,20 @@ app.post('/names', function(req, res) {
   });
 });
 
+app.post('/albumpic', function(req, res) {
+  Name.findOne({originalName: req.body.name}, function(err, name) {
+    name.imageUrl = req.body.url;
+    name.save();
+  });
+});
+
+app.post('/albumtitle', function(req, res) {
+  Name.findOne({originalName: req.body.name}, function(err, name) {
+    name.albumTitle = req.body.quote;
+    name.save();
+  });
+});
+
 app.listen(3000, function() {
   console.log('Now listening on port 3000');
 });

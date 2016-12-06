@@ -62,10 +62,14 @@ app.controller('aliasController', function($scope, $http) {
       var randomIndex = Math.floor(Math.random() * response.data.photos.length);
       var fetchedUrl = response.data.photos[randomIndex].image_url;
 
-      if ($scope.clickedName.imageUrl === '') {
-        $scope.clickedName.imageUrl = fetchedUrl;
-      }
+      var resObj = {
+        name: $scope.clickedName.originalName,
+        url: fetchedUrl
+      };
+
+      $http.post('/albumpic', resObj);
     });
+
   };
 
   $scope.generateAlbumTitle = function() {
@@ -81,9 +85,15 @@ app.controller('aliasController', function($scope, $http) {
       var finishedQuote = quoteArr.splice(quoteArr.length - 4).join(' ');
       finishedQuote = finishedQuote.substring(0, finishedQuote.length - 1);
 
-      if ($scope.clickedName.albumTitle === '') {
-        $scope.clickedName.albumTitle = finishedQuote;
-      }
+      var resObj = {
+        name: $scope.clickedName.originalName,
+        quote: finishedQuote
+      };
+      $http.post('/albumtitle', resObj);
+
+      // if ($scope.clickedName.albumTitle === '') {
+      //   $scope.clickedName.albumTitle = finishedQuote;
+      // }
     });
   };
 });
