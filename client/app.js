@@ -15,8 +15,8 @@ app.controller('aliasController', function($scope, $http) {
   $scope.clickedName = {};
   $scope.newName = {};
 
-  var picReqUrl = 'https://api.500px.com/v1/photos/search?rpp=100&consumer_key=zooQGE9KlZlXTRSK1aBnKm69BQx17OpGoREecjhO&term=landscape';
-  var quoteReqUrl = 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous';
+  var picReqUrl = 'https://api.500px.com/v1/photos?feature=popular&sort=rating&image_size=3&include_states=voted&rpp=100&&consumer_key=zooQGE9KlZlXTRSK1aBnKm69BQx17OpGoREecjhO';
+  var quoteReqUrl = 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=movies';
 
   var existsInGenerated = function(name, arr) {
     for (var i = 0; i < arr.length; i++) {
@@ -106,6 +106,17 @@ app.controller('aliasController', function($scope, $http) {
       throw err;
     });
 
+  };
+
+  $scope.deleteNames = function() {
+    $http.post('/delete');
+
+    $http({
+      method: 'GET',
+      url: '/names'
+    }).then(function(response) {
+      $scope.generatedNames = response.data;
+    });
   };
 
 });

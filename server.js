@@ -51,10 +51,12 @@ app.post('/album', function(req, res) {
   });
 });
 
+app.post('/delete', function(req, res) {
+  Name.remove({}, function(err) {
+    if (err) { throw err; }
+  });
+});
+
 app.listen(3000, function() {
   console.log('Now listening on port 3000');
 });
-
-// app.get('*', function(req, res) {
-//   res.sendFile(path.join(__dirname, './client/index.html'));
-// });

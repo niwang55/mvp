@@ -1,52 +1,115 @@
 body {
   background-color: lightgrey;
   font-family: 'Open Sans';
-  font-size: 26px;
-  background-image: url('https://images.freecreatives.com/wp-content/uploads/2016/02/25-Subtle-Textures-Pack-Download.jpg');
-  background-size: cover;
+  font-size: 20px;
+  background-image: url('https://s18.postimg.org/ens0mc3o9/confectionary.png');
+}
+
+h1 {
+  margin: 0;
+  margin-top: 40px;
+  text-align: center;
+  font-family: 'Source Sans Pro';
+  font-size: 60px;
 }
 
 table {
-  background-color: white;
-  min-width: 300px;
+  margin-top: 20px;
+  border-radius: 5px;
 }
 
 p {
   font-size: 16px;
 }
 
+th {
+  color: white;
+  background: black;
+  background-image: url('https://cdn.theatlantic.com/assets/media/img/mt/2015/10/Cygnus_v3_BandW/facebook.jpg?1444687096');
+  border-right: 1px solid #343a45;
+  font-size: 23px;
+  font-weight: 100;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align: middle;
+}
+
+td {
+  text-align: center;
+}
+
+input {
+  height: 25px;
+}
+
+.title-pic {
+  height: 50px;
+}
+
+.app {
+  position: absolute;
+  top: 100px;
+  left: 300px;
+}
+
+.table-fill {
+  background: white;
+  min-width: 300px;
+  border-radius:3px;
+  border-collapse: collapse;
+  margin: auto;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+
 .name-block {
   display: inline-block;
+  margin-top: 30px;
+}
+
+.name-form {
+  margin: 20px;
+}
+
+.name-box {
+  width: 300px;
+}
+
+.submit-button:hover {
+  background-color: lightgray;
+  border-radius: 5px;
 }
 
 .album {
   position: fixed;
-  top: 30px;
-  right: 700px;
+  top: 160px;
+  right: 500px;
   display: inline-block;
 }
 
 .album-cover {
-  width: 200px;
+  width: 300px;
   position: absolute;
 }
 
 .album-title {
   font-family: Raleway;
-  font-size: 16px;
+  font-size: 20px;
   left: 10px;
-  margin: 150px 0 15px;
+  margin: 250px 0 15px 0;
   position: absolute;
-  width: 175px;
+  width: 275px;
   color: white;
   background-color: rgba(50, 50, 50, 0.75);
 }
 
 .band-name {
+  margin-top: 20px;
   position: absolute;
-  width: 175px;
+  width: 275px;
   left: 15px;
-  font-size: 20px;
+  font-size: 36px;
   font-family: Bungee;
   color: #eff2f7;
   text-shadow: 2px 2px grey;

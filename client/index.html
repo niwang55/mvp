@@ -8,45 +8,52 @@
   <script src="app.js"></script>
   <script src="data.js"></script>
   <link rel="stylesheet" type="text/css" href="styles.css"/>
-  <link href="https://fonts.googleapis.com/css?family=Bungee|Open+Sans|Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Bungee|Open+Sans|Raleway|Source+Sans+Pro" rel="stylesheet">
 
 </head>
 <body ng-controller='aliasController'>
 
-  <h1>Pseudonym</h1>
+  <h1>PSEUDONYM</h1>
 
-  <div class='name-block'>
-    <div class='name-form'>
-      <form name='nameForm'>
-        <input type='text' name='test' placeholder='Your full name' ng-model='nameOfUser'/>
-        <input type='submit' value='Generate!' ng-click='generateAndAddName(nameOfUser)'/>
-      </form>
+  <div class='app'>
+    <div class='name-block'>
+      <div class='name-form'>
+        <form name='nameForm'>
+          <input type='text' class='name-box' name='test' placeholder='Your full name' ng-model='nameOfUser'/>
+          <input type='submit' class='submit-button' value='Generate!' ng-click='generateAndAddName(nameOfUser)'/>
+        </form>
+      </div>
+
+      <div class='name-list'>
+        <table class='table-fill' border='1'>
+          <th class='text-left' colspan='2'>Generated Names</th>
+          <tr>
+            <th class='text-left'>Original</th>
+            <th class='text-left'>Pseudonym</th>
+          </tr>
+          <tr ng-repeat='name in generatedNames' ng-click='generateAlbum()'>
+            <td>{{name.originalName}}</td>
+            <td>{{name.generatedName}}</td>
+          </tr>
+        </table>
+      </div>
     </div>
 
-    <div class='name-list'>
-      <table border='1'>
-        <th colspan='2'>Generated Names</th>
-        <tr>
-          <th>Original</th>
-          <th>Pseudonym</th>
-        </tr>
-        <tr ng-repeat='name in generatedNames' ng-click='generateAlbum()'>
-          <td>{{name.originalName}}</td>
-          <td>{{name.generatedName}}</td>
-        </tr>
-      </table>
+
+    <div class='album'>
+      <span ng-show='currentName.albumTitle'>Album:</span>
+      <img class='album-cover' src={{currentName.imageUrl}} />
+      <span class='band-name'>{{currentName.generatedName}}</span>
+      <span class='album-title'>{{currentName.albumTitle}}</span>
+    </div>
+
+    <p>Click on a name to generate a random album</p>
+
+    <div class='delete-names'>
+      <button ng-click='deleteNames()'>Clear Names</button>
     </div>
   </div>
 
-
-  <div class='album'>
-    <span ng-show='currentName.albumTitle'>Album:</span>
-    <img class='album-cover' src={{currentName.imageUrl}} />
-    <span class='band-name'>{{currentName.generatedName}}</span>
-    <span class='album-title'>{{currentName.albumTitle}}</span>
-  </div>
-
-  <p>Click on a name to generate a random album</p>
 
 </body>
 </html>
